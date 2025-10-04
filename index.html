@@ -1,15 +1,80 @@
+
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Insight - AI-Powered Code Analysis</title>
-    <meta name="description" content="Analyze your codebases with AI-powered insights. Generate detailed reports combining static code analysis with AI explanations." />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+<head>
+  <meta charset="utf-8" />
+  <title>Smooth Scroll Example</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="#sec1">Section 1</a>
+      <a href="#sec2">Section 2</a>
+      <a href="#sec3">Section 3</a>
+    </nav>
+  </header>
+  <main>
+    <section id="sec1" class="target">
+      <h2>Section 1</h2>
+      <p>Content...</p>
+    </section>
+
+    <section id="sec2" class="target">
+      <h2>Section 2</h2>
+      <p>Content...</p>
+    </section>
+
+    <section id="sec3" class="target">
+      <h2>Section 3</h2>
+      <p>Content...</p>
+    </section>
+  </main>
+</body>
+</html>
+<style>
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height, 70px);
+}
+
+:root {
+  --header-height: 70px; }
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  background: #222;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  z-index: 1000;
+}
+
+.nav a {
+  color: #fff;
+  margin-right: 1rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+main {
+  padding-top: calc(var(--header-height) + 1rem);
+}
+
+.target {
+  height: 80vh;
+  padding: 1rem;
+  scroll-margin-top: var(--header-height);
+}
+
+.target:nth-child(odd) { background: #f0f0f0; }
+.target:nth-child(even) { background: #ddd; }
+
+</style>
   </body>
 </html>
-<!-- Done -->
+
