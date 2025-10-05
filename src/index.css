@@ -640,20 +640,151 @@ html {
   }
 }
 
-/* Mobile Menu Animations */
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+[data-theme="light"] body {
+  background: #f8fafc;
+  color: #0f172a; 
 }
 
-/* Text Selection */
-::selection {
-  background-color: rgba(0, 245, 255, 0.3);
-  color: white;
+[data-theme="light"] .cyber-grid {
+  background-image: 
+    linear-gradient(rgba(6, 182, 212, 0.35) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 182, 212, 0.35) 1px, transparent 1px) !important;
+}
+
+[data-theme="light"] .particles {
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, rgba(6, 182, 212, 0.75), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(168, 85, 247, 0.75), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(236, 72, 153, 0.75), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(16, 185, 129, 0.75), transparent),
+    radial-gradient(2px 2px at 160px 30px, rgba(6, 182, 212, 0.5), transparent) !important;
+}
+
+[data-theme="light"] .mouse-glow {
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.2) 0%, transparent 70%) !important;
+}
+
+[data-theme="light"] .text-white { color: #0f172a !important; }
+[data-theme="light"] .text-gray-300 { color: #334155 !important; }
+[data-theme="light"] .text-gray-400 { color: #475569 !important; }
+[data-theme="light"] .text-gray-500 { color: #64748b !important; }
+
+[data-theme="light"] .bg-gray-900 { background-color: #f8fafc !important; }
+[data-theme="light"] .bg-gray-900\/80 { background-color: rgba(248, 250, 252, 0.8) !important; }
+[data-theme="light"] .bg-gray-900\/50 { background-color: rgba(248, 250, 252, 0.5) !important; }
+[data-theme="light"] .bg-gray-800 { background-color: #ffffff !important; }
+[data-theme="light"] .bg-gray-800\/70 { background-color: rgba(255,255,255,0.7) !important; }
+[data-theme="light"] .bg-gray-800\/50 { background-color: rgba(255,255,255,0.5) !important; }
+[data-theme="light"] .bg-gray-800\/30 { background-color: rgba(255,255,255,0.3) !important; }
+
+[data-theme="light"] .border-gray-700 { border-color: #e2e8f0 !important; }
+[data-theme="light"] .border-gray-700\/50 { border-color: rgba(226, 232, 240, 0.5) !important; }
+[data-theme="light"] .border-gray-700\/30 { border-color: rgba(226, 232, 240, 0.3) !important; }
+[data-theme="light"] .border-cyan-500\/20 { border-color: rgba(6, 182, 212, 0.2) !important; }
+
+[data-theme="light"] .feature-card {
+  background-color: #ffffff !important;
+  border-color: rgba(226, 232, 240, 0.5) !important;
+}
+
+[data-theme="light"] .feature-card:hover {
+  border-color: rgba(6, 182, 212, 0.5) !important;
+  background-color: rgba(240, 253, 255, 0.7) !important;
+}
+
+[data-theme="light"] .feature-card::before {
+  background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.15), transparent) !important;
+}
+[data-theme="light"] .feature-icon {
+  background: linear-gradient(to bottom right, rgba(6, 182, 212, 0.1), rgba(168, 85, 247, 0.1)) !important;
+}
+[data-theme="light"] .neon-button-subtle {
+  color: #000000 !important; 
+  font-weight: 500;
+}
+
+[data-theme="light"] .neon-button-subtle:hover {
+  color: #0891b2 !important;
+  background-color: rgba(6, 182, 212, 0.1) !important;
+  border-radius: 0.5rem;
+}
+[data-theme="light"] .neon-button-outline {
+  border-color: #000000 !important; /* black border */
+  color: #000000 !important; /* black text */
+}
+
+[data-theme="light"] .neon-button-outline:hover {
+  border-color: #0891b2 !important; /* cyan border on hover */
+  color: #0891b2 !important; /* cyan text on hover */
+  background-color: rgba(6, 182, 212, 0.1) !important;
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.25) !important;
+}
+
+[data-theme="light"] .group-hover\:text-cyan-400:hover,
+[data-theme="light"] .group:hover .group-hover\:text-cyan-400 {
+  color: #0891b2 !important; 
+}
+
+/* Hero title gradient - cyan to teal for light mode */
+[data-theme="light"] .bg-gradient-to-r.from-cyan-400.via-purple-400.to-pink-400 {
+  background-image: linear-gradient(to right, #06b6d4, #0F766E) !important;
+}
+
+/* Powerful Features heading gradient */
+[data-theme="light"] .bg-gradient-to-r.from-cyan-400.to-purple-400 {
+  background-image: linear-gradient(to right, #06b6d4, #0F766E) !important;
+}
+
+/* Product Roadmap heading gradient */
+[data-theme="light"] .bg-gradient-to-r.from-cyan-400.to-pink-400 {
+  background-image: linear-gradient(to right, #06b6d4, #0F766E) !important;
+}
+
+/* Footer text - black for readability in light mode */
+[data-theme="light"] footer .text-gray-500 {
+  color: #000000 !important;
+}
+
+[data-theme="light"] footer .text-gray-400 {
+  color: #374151 !important; /* gray-700 - slightly lighter to create hierarchy */
+}
+
+[data-theme="light"] footer .text-cyan-400\/80 {
+  color: #000000 !important; /* pure black for emphasis */
+}
+
+[data-theme="light"] footer .hover\:text-cyan-400:hover {
+  color: #0891b2 !important;
+}
+
+[data-theme="light"] .terminal-window,
+[data-theme="light"] .terminal-card {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+[data-theme="light"] .terminal-header {
+  background-color: #f1f5f9 !important; /* slate-100 */
+  border-color: #e2e8f0 !important;
+}
+
+[data-theme="light"] .api-input {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .bg-gray-900\/80.backdrop-blur-md { 
+  background-color: rgba(248, 250, 252, 0.85) !important; 
+}
+
+[data-theme="light"] .bg-black\/50 { background-color: rgba(2, 6, 23, 0.15) !important; }
+
+[data-theme="light"] .hover\:bg-cyan-500\/5:hover { background-color: rgba(6, 182, 212, 0.06) !important; }
+[data-theme="light"] .hover\:bg-gray-800:hover { background-color: #f8fafc !important; }
+[data-theme="light"] .hover\:bg-gray-800\/70:hover { background-color: rgba(248, 250, 252, 0.7) !important; }
+
+[data-theme="light"] ::selection {
+  background-color: rgba(99, 102, 241, 0.25); /* indigo-500/25 */
+  color: #111827;
 }
