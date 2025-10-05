@@ -311,52 +311,51 @@ const Layout: React.FC<LayoutProps> = ({ children, onOpenOnboarding }) => {
               </div>
 
               {/* Connect Section */}
-              <div className="lg:col-span-3">
-                <h3 className="text-sm font-bold uppercase tracking-wider text-pink-400 mb-6 flex items-center">
-                  <div className="w-8 h-px bg-gradient-to-r from-pink-500 to-transparent mr-3"></div>
-                  Connect
-                </h3>
-                <p className="text-gray-400 text-sm mb-6">
-                  Join our community and stay updated with the latest features and improvements.
-                </p>
-                <div className="flex flex-wrap gap-3">
-                  <a 
-                    href="https://github.com/XplnHUB/Insight-Py" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group p-3 bg-gray-800/50 hover:bg-gray-800 border border-gray-700/50 hover:border-cyan-500/50 rounded-xl transition-all duration-300 hover:scale-110"
-                    title="GitHub"
-                  >
-                    <Github className="w-5 h-5 text-gray-400 group-hover:text-cyan-400 transition-colors" />
-                  </a>
-                  <a 
-                    href="" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group p-3 bg-gray-800/50 hover:bg-gray-800 border border-gray-700/50 hover:border-cyan-500/50 rounded-xl transition-all duration-300 hover:scale-110"
-                    title="Twitter"
-                  >
-                    <Twitter className="w-5 h-5 text-gray-400 group-hover:text-cyan-400 transition-colors" />
-                  </a>
-                  <a 
-                    href="https://www.linkedin.com/in/arpitsarang/" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group p-3 bg-gray-800/50 hover:bg-gray-800 border border-gray-700/50 hover:border-purple-500/50 rounded-xl transition-all duration-300 hover:scale-110"
-                    title="LinkedIn"
-                  >
-                    <Linkedin className="w-5 h-5 text-gray-400 group-hover:text-purple-400 transition-colors" />
-                  </a>
-                  <a 
-                    href="" 
-                    className="group p-3 bg-gray-800/50 hover:bg-gray-800 border border-gray-700/50 hover:border-pink-500/50 rounded-xl transition-all duration-300 hover:scale-110"
-                    title="Email"
-                  >
-                    <Mail className="w-5 h-5 text-gray-400 group-hover:text-pink-400 transition-colors" />
-                  </a>
-                </div>
-              </div>
-            </div>
+<div className="lg:col-span-3">
+  <h3 className="text-sm font-bold uppercase tracking-wider text-pink-400 mb-6 flex items-center">
+    <span className="w-8 h-px bg-gradient-to-r from-pink-500 to-transparent mr-3"></span>
+    Connect
+  </h3>
+  <p className="text-gray-400 text-sm mb-6">
+    Join our community and stay updated with the latest features and improvements.
+  </p>
+  <div className="flex flex-wrap gap-3">
+    <a 
+      href="https://github.com/XplnHUB/Insight-Py" 
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group p-3 bg-gray-800/50 hover:bg-gray-800 border border-gray-700/50 hover:border-cyan-500/50 rounded-xl transition-all duration-300 hover:scale-110"
+      title="GitHub"
+    >
+      <Github className="w-5 h-5 text-gray-400 group-hover:text-cyan-400 transition-colors" />
+    </a>
+    <a 
+      href="https://x.com/CodeMaverick143" 
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group p-3 bg-gray-800/50 hover:bg-gray-800 border border-gray-700/50 hover:border-cyan-500/50 rounded-xl transition-all duration-300 hover:scale-110"
+      title="Twitter"
+    >
+      <Twitter className="w-5 h-5 text-gray-400 group-hover:text-cyan-400 transition-colors" />
+    </a>
+    <a 
+      href="https://www.linkedin.com/in/arpitsarang/" 
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group p-3 bg-gray-800/50 hover:bg-gray-800 border border-gray-700/50 hover:border-purple-500/50 rounded-xl transition-all duration-300 hover:scale-110"
+      title="LinkedIn"
+    >
+      <Linkedin className="w-5 h-5 text-gray-400 group-hover:text-purple-400 transition-colors" />
+    </a>
+    <a 
+      href="mailto:xplnhub@gmail.com" 
+      className="group p-3 bg-gray-800/50 hover:bg-gray-800 border border-gray-700/50 hover:border-pink-500/50 rounded-xl transition-all duration-300 hover:scale-110"
+      title="Email"
+    >
+      <Mail className="w-5 h-5 text-gray-400 group-hover:text-pink-400 transition-colors" />
+    </a>
+  </div>
+</div>
 
             {/* Bottom Bar */}
             <div className="relative">
