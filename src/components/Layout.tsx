@@ -4,10 +4,9 @@ import { Terminal, Github, Menu, X, ChevronRight, Twitter, Linkedin, Mail, Heart
 
 interface LayoutProps {
   children: React.ReactNode;
-  onOpenOnboarding: () => void;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children, onOpenOnboarding }) => {
+const Layout: React.FC<LayoutProps> = ({ children }) => {
   const mouseGlowRef = useRef<HTMLDivElement | null>(null);
   const targetPosRef = useRef({ x: 0, y: 0 });
   const rafIdRef = useRef<number | null>(null);
@@ -38,7 +37,7 @@ const Layout: React.FC<LayoutProps> = ({ children, onOpenOnboarding }) => {
     return () => {
       running = false;
       if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
-      window.removeEventListener('pointermove', handlePointerMove as any);
+      window.removeEventListener('pointermove', handlePointerMove);
     };
   }, []);
 
@@ -51,7 +50,9 @@ const Layout: React.FC<LayoutProps> = ({ children, onOpenOnboarding }) => {
     { path: '/', label: 'Home' },
     { path: '/features', label: 'Features' },
     { path: '/implementation', label: 'Implementation' },
-    { path: '/roadmap', label: 'Roadmap' }
+    { path: '/roadmap', label: 'Roadmap' },
+    { path: '/loading-demo', label: 'Loading Demo' },
+    { path: '/loading-test', label: 'Loading Test' }
   ];
 
   const isActive = (path: string) => {
@@ -311,51 +312,51 @@ const Layout: React.FC<LayoutProps> = ({ children, onOpenOnboarding }) => {
               </div>
 
               {/* Connect Section */}
-<div className="lg:col-span-3">
-  <h3 className="text-sm font-bold uppercase tracking-wider text-pink-400 mb-6 flex items-center">
-    <span className="w-8 h-px bg-gradient-to-r from-pink-500 to-transparent mr-3"></span>
-    Connect
-  </h3>
-  <p className="text-gray-400 text-sm mb-6">
-    Join our community and stay updated with the latest features and improvements.
-  </p>
-  <div className="flex flex-wrap gap-3">
-    <a 
-      href="https://github.com/XplnHUB/Insight-Py" 
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group p-3 bg-gray-800/50 hover:bg-gray-800 border border-gray-700/50 hover:border-cyan-500/50 rounded-xl transition-all duration-300 hover:scale-110"
-      title="GitHub"
-    >
-      <Github className="w-5 h-5 text-gray-400 group-hover:text-cyan-400 transition-colors" />
-    </a>
-    <a 
-      href="https://x.com/CodeMaverick143" 
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group p-3 bg-gray-800/50 hover:bg-gray-800 border border-gray-700/50 hover:border-cyan-500/50 rounded-xl transition-all duration-300 hover:scale-110"
-      title="Twitter"
-    >
-      <Twitter className="w-5 h-5 text-gray-400 group-hover:text-cyan-400 transition-colors" />
-    </a>
-    <a 
-      href="https://www.linkedin.com/in/arpitsarang/" 
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group p-3 bg-gray-800/50 hover:bg-gray-800 border border-gray-700/50 hover:border-purple-500/50 rounded-xl transition-all duration-300 hover:scale-110"
-      title="LinkedIn"
-    >
-      <Linkedin className="w-5 h-5 text-gray-400 group-hover:text-purple-400 transition-colors" />
-    </a>
-    <a 
-      href="mailto:xplnhub@gmail.com" 
-      className="group p-3 bg-gray-800/50 hover:bg-gray-800 border border-gray-700/50 hover:border-pink-500/50 rounded-xl transition-all duration-300 hover:scale-110"
-      title="Email"
-    >
-      <Mail className="w-5 h-5 text-gray-400 group-hover:text-pink-400 transition-colors" />
-    </a>
-  </div>
-</div>
+              <div className="lg:col-span-3">
+                <h3 className="text-sm font-bold uppercase tracking-wider text-pink-400 mb-6 flex items-center">
+                  <span className="w-8 h-px bg-gradient-to-r from-pink-500 to-transparent mr-3"></span>
+                  Connect
+                </h3>
+                <p className="text-gray-400 text-sm mb-6">
+                  Join our community and stay updated with the latest features and improvements.
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  <a 
+                    href="https://github.com/XplnHUB/Insight-Py" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group p-3 bg-gray-800/50 hover:bg-gray-800 border border-gray-700/50 hover:border-cyan-500/50 rounded-xl transition-all duration-300 hover:scale-110"
+                    title="GitHub"
+                  >
+                    <Github className="w-5 h-5 text-gray-400 group-hover:text-cyan-400 transition-colors" />
+                  </a>
+                  <a 
+                    href="https://x.com/CodeMaverick143" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group p-3 bg-gray-800/50 hover:bg-gray-800 border border-gray-700/50 hover:border-cyan-500/50 rounded-xl transition-all duration-300 hover:scale-110"
+                    title="Twitter"
+                  >
+                    <Twitter className="w-5 h-5 text-gray-400 group-hover:text-cyan-400 transition-colors" />
+                  </a>
+                  <a 
+                    href="https://www.linkedin.com/in/arpitsarang/" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group p-3 bg-gray-800/50 hover:bg-gray-800 border border-gray-700/50 hover:border-purple-500/50 rounded-xl transition-all duration-300 hover:scale-110"
+                    title="LinkedIn"
+                  >
+                    <Linkedin className="w-5 h-5 text-gray-400 group-hover:text-purple-400 transition-colors" />
+                  </a>
+                  <a 
+                    href="mailto:xplnhub@gmail.com" 
+                    className="group p-3 bg-gray-800/50 hover:bg-gray-800 border border-gray-700/50 hover:border-pink-500/50 rounded-xl transition-all duration-300 hover:scale-110"
+                    title="Email"
+                  >
+                    <Mail className="w-5 h-5 text-gray-400 group-hover:text-pink-400 transition-colors" />
+                  </a>
+                </div>
+              </div>
 
             {/* Bottom Bar */}
             <div className="relative">
@@ -381,6 +382,7 @@ const Layout: React.FC<LayoutProps> = ({ children, onOpenOnboarding }) => {
 
           {/* Decorative bottom gradient */}
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-900 to-transparent pointer-events-none"></div>
+          </div>
         </footer>
       </div>
     </div>

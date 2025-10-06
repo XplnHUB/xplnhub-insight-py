@@ -1,12 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Play, Github, Star, ChevronRight, Code, FileText, BarChart3, Brain } from 'lucide-react';
+import { useLoading } from '../hooks/useLoading';
+import { GridSkeleton } from '../components/__test__/LoadingSkeleton';
+import { InlineLoader, LoadingButton } from '../components/Spinner';
 
 interface HomeProps {
   onOpenOnboarding: () => void;
 }
 
 const Home: React.FC<HomeProps> = ({ onOpenOnboarding }) => {
+  const [isFeaturesLoading, setIsFeaturesLoading] = useState(true);
+  const { isLoading: isOnboardingLoading, executeWithLoading } = useLoading();
+
+
+  // Simulate features loading
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsFeaturesLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleGetStarted = async () => {
+    await executeWithLoading(async () => {
+      // Simulate some async operation
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      onOpenOnboarding();
+    });
+  };
+
   const featureHighlights = [
     {
       icon: <Code className="w-8 h-8" />,
@@ -48,14 +71,15 @@ const Home: React.FC<HomeProps> = ({ onOpenOnboarding }) => {
               static code analysis with AI explanations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button 
-                onClick={onOpenOnboarding}
+              <LoadingButton
+                isLoading={isOnboardingLoading}
+                onClick={handleGetStarted}
                 className="neon-button group flex items-center space-x-2"
               >
                 <Play className="w-5 h-5" />
                 <span>Get Started</span>
                 <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
+              </LoadingButton>
               <a href="https://github.com/XplnHUB/Insight-Py" target="_blank" rel="noopener noreferrer">
                 <button className="neon-button-outline flex items-center space-x-2">
                   <Github className="w-5 h-5" />
@@ -146,23 +170,28 @@ const Home: React.FC<HomeProps> = ({ onOpenOnboarding }) => {
               </button>
             </Link>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {featureHighlights.map((feature, index) => (
-              <div key={index} className="feature-card group">
-                <div className="feature-icon-wrapper mb-6">
-                  <div className="feature-icon">
-                    {feature.icon}
+          <InlineLoader 
+            isLoading={isFeaturesLoading} 
+            fallback={<GridSkeleton items={4} columns={4} />}
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {featureHighlights.map((feature, index) => (
+                <div key={index} className="feature-card group">
+                  <div className="feature-icon-wrapper mb-6">
+                    <div className="feature-icon">
+                      {feature.icon}
+                    </div>
                   </div>
+                  <h3 className="text-xl font-semibold mb-4 text-white group-hover:text-cyan-400 transition-colors">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-400 leading-relaxed">
+                    {feature.description}
+                  </p>
                 </div>
-                <h3 className="text-xl font-semibold mb-4 text-white group-hover:text-cyan-400 transition-colors">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-400 leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          </InlineLoader>
         </div>
       </section>
 
