@@ -4,7 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom CSS Variables */
 :root {
   --neon-cyan: #00f5ff;
   --neon-purple: #a855f7;
@@ -22,7 +21,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Animated Background Effects */
 .cyber-grid {
   position: absolute;
   top: 0;
@@ -69,13 +67,11 @@ body {
   height: 400px;
   background: radial-gradient(circle, rgba(0, 245, 255, 0.1) 0%, transparent 70%);
   pointer-events: none;
-  /* Avoid transitioning position to prevent lag; only fade if needed */
   transition: opacity 0.15s ease-out;
   will-change: transform;
   z-index: 1;
 }
 
-/* Animations */
 .animate-fade-in {
   animation: fadeIn 1s ease-out;
 }
@@ -85,7 +81,6 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Neon Buttons */
 .neon-button {
   @apply px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-semibold rounded-lg;
   @apply hover:shadow-lg transition-all duration-300;
@@ -110,7 +105,6 @@ body {
   @apply px-4 py-2 text-gray-300 hover:text-cyan-400 transition-colors duration-300;
 }
 
-/* Feature Cards */
 .feature-card {
   @apply bg-gray-800/50 p-8 rounded-xl border border-gray-700/50 backdrop-blur-sm;
   @apply hover:border-cyan-500/50 hover:bg-gray-800/70 transition-all duration-300;
@@ -147,7 +141,6 @@ body {
   box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
 }
 
-/* Terminal Window */
 .terminal-window {
   @apply bg-gray-900 rounded-xl border border-gray-700 overflow-hidden;
   box-shadow: 0 0 50px rgba(0, 245, 255, 0.2);
@@ -184,7 +177,6 @@ body {
   to { width: 100%; }
 }
 
-/* File Type Badges */
 .file-type-badge {
   @apply bg-gray-800/50 border border-gray-700/50 rounded-lg p-4 text-center;
   @apply hover:border-cyan-500/50 hover:bg-gray-800/70 transition-all duration-300;
@@ -196,7 +188,6 @@ body {
   transform: translateY(-2px);
 }
 
-/* Roadmap */
 .roadmap-container {
   @apply space-y-8;
 }
@@ -243,12 +234,10 @@ body {
   @apply bg-gray-500/20 text-gray-400 border border-gray-500/30;
 }
 
-/* Smooth Scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .cyber-grid {
     background-size: 30px 30px;
@@ -275,7 +264,6 @@ html {
   }
 }
 
-/* Scrollbar Styling */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -293,7 +281,6 @@ html {
   background: linear-gradient(180deg, #00d4ff, #9333ea);
 }
 
-/* Additional Glow Effects */
 .glow-cyan {
   box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
 }
@@ -306,7 +293,6 @@ html {
   box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
 }
 
-/* Onboarding Modal Styles */
 .onboarding-overlay {
   @apply fixed inset-0 z-50 flex items-center justify-center;
   background: rgba(0, 0, 0, 0.9);
@@ -427,7 +413,6 @@ html {
   transform: translateY(-1px);
 }
 
-/* Terminal Card Styles */
 .terminal-card {
   @apply bg-gray-900 rounded-xl border border-gray-700 overflow-hidden;
   box-shadow: 0 0 30px rgba(0, 245, 255, 0.2);
@@ -468,7 +453,6 @@ html {
   transform: translateY(-1px);
 }
 
-/* OS Selector */
 .os-selector {
   @apply flex gap-4 justify-center;
 }
@@ -483,7 +467,6 @@ html {
   box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
 }
 
-/* Virtual Environment Visualization */
 .venv-visualization {
   @apply flex flex-col items-center py-8;
 }
@@ -516,7 +499,6 @@ html {
   100% { transform: rotate(360deg); }
 }
 
-/* API Key Input */
 .api-key-input, .path-input {
   @apply relative;
 }
@@ -543,7 +525,6 @@ html {
   @apply p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-lg;
 }
 
-/* Installation Progress */
 .installation-progress {
   @apply space-y-2;
 }
@@ -563,7 +544,6 @@ html {
   100% { width: 100%; }
 }
 
-/* Commands Grid */
 .commands-grid {
   @apply grid grid-cols-1 md:grid-cols-2 gap-4;
 }
@@ -577,7 +557,6 @@ html {
   box-shadow: 0 0 15px rgba(0, 245, 255, 0.2);
 }
 
-/* Success Message */
 .success-message {
   @apply text-center p-6 bg-gradient-to-r from-green-500/10 to-cyan-500/10 rounded-xl;
   @apply border border-green-500/30;
@@ -588,13 +567,11 @@ html {
   animation: bounce 2s ease-in-out infinite;
 }
 
-/* Onboarding Step Preview */
 .onboarding-step-preview {
   @apply flex flex-col items-center p-4 bg-gray-800/30 rounded-lg border border-gray-700/30;
   @apply hover:border-cyan-500/30 transition-all duration-300;
 }
 
-/* Typewriter Animation */
 .typewriter {
   overflow: hidden;
   white-space: nowrap;
@@ -616,7 +593,6 @@ html {
   to { width: 100%; }
 }
 
-/* Responsive Design for Onboarding */
 @media (max-width: 768px) {
   .onboarding-modal {
     @apply mx-2;
@@ -640,20 +616,150 @@ html {
   }
 }
 
-/* Mobile Menu Animations */
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+[data-theme="light"] body {
+  background: #f8fafc;
+  color: #0f172a; 
 }
 
-/* Text Selection */
-::selection {
-  background-color: rgba(0, 245, 255, 0.3);
-  color: white;
+[data-theme="light"] .cyber-grid {
+  background-image: 
+    linear-gradient(rgba(6, 182, 212, 0.35) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 182, 212, 0.35) 1px, transparent 1px) !important;
 }
+
+[data-theme="light"] .particles {
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, rgba(6, 182, 212, 0.75), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(168, 85, 247, 0.75), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(236, 72, 153, 0.75), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(16, 185, 129, 0.75), transparent),
+    radial-gradient(2px 2px at 160px 30px, rgba(6, 182, 212, 0.5), transparent) !important;
+}
+
+[data-theme="light"] .mouse-glow {
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.2) 0%, transparent 70%) !important;
+}
+
+[data-theme="light"] .text-white { color: #0f172a !important; }
+[data-theme="light"] .text-gray-300 { color: #334155 !important; }
+[data-theme="light"] .text-gray-400 { color: #475569 !important; }
+[data-theme="light"] .text-gray-500 { color: #64748b !important; }
+
+[data-theme="light"] .bg-gray-900 { background-color: #f8fafc !important; }
+[data-theme="light"] .bg-gray-900\/80 { background-color: rgba(248, 250, 252, 0.8) !important; }
+[data-theme="light"] .bg-gray-900\/50 { background-color: rgba(248, 250, 252, 0.5) !important; }
+[data-theme="light"] .bg-gray-800 { background-color: #ffffff !important; }
+[data-theme="light"] .bg-gray-800\/70 { background-color: rgba(255,255,255,0.7) !important; }
+[data-theme="light"] .bg-gray-800\/50 { background-color: rgba(255,255,255,0.5) !important; }
+[data-theme="light"] .bg-gray-800\/30 { background-color: rgba(255,255,255,0.3) !important; }
+
+[data-theme="light"] .border-gray-700 { border-color: #e2e8f0 !important; }
+[data-theme="light"] .border-gray-700\/50 { border-color: rgba(226, 232, 240, 0.5) !important; }
+[data-theme="light"] .border-gray-700\/30 { border-color: rgba(226, 232, 240, 0.3) !important; }
+[data-theme="light"] .border-cyan-500\/20 { border-color: rgba(6, 182, 212, 0.2) !important; }
+
+[data-theme="light"] .feature-card {
+  background-color: #ffffff !important;
+  border-color: rgba(226, 232, 240, 0.5) !important;
+}
+
+[data-theme="light"] .feature-card:hover {
+  border-color: rgba(6, 182, 212, 0.5) !important;
+  background-color: rgba(240, 253, 255, 0.7) !important;
+}
+
+[data-theme="light"] .feature-card::before {
+  background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.15), transparent) !important;
+}
+[data-theme="light"] .feature-icon {
+  background: linear-gradient(to bottom right, rgba(6, 182, 212, 0.1), rgba(168, 85, 247, 0.1)) !important;
+}
+[data-theme="light"] .neon-button-subtle {
+  color: #000000 !important; 
+  font-weight: 500;
+}
+
+[data-theme="light"] .neon-button-subtle:hover {
+  color: #0891b2 !important;
+  background-color: rgba(6, 182, 212, 0.1) !important;
+  border-radius: 0.5rem;
+}
+[data-theme="light"] .neon-button-outline {
+  border-color: #000000 !important;
+  color: #000000 !important;
+}
+
+[data-theme="light"] .neon-button-outline:hover {
+  border-color: #0891b2 !important;
+  color: #0891b2 !important;
+  background-color: rgba(6, 182, 212, 0.1) !important;
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.25) !important;
+}
+
+[data-theme="light"] .group-hover\:text-cyan-400:hover,
+[data-theme="light"] .group:hover .group-hover\:text-cyan-400 {
+  color: #0891b2 !important; 
+}
+
+[data-theme="light"] .bg-gradient-to-r.from-cyan-400.via-purple-400.to-pink-400 {
+  background-image: linear-gradient(to right, #06b6d4, #0F766E) !important;
+}
+
+[data-theme="light"] .bg-gradient-to-r.from-cyan-400.to-purple-400 {
+  background-image: linear-gradient(to right, #06b6d4, #0F766E) !important;
+}
+
+[data-theme="light"] .bg-gradient-to-r.from-cyan-400.to-pink-400 {
+  background-image: linear-gradient(to right, #06b6d4, #0F766E) !important;
+}
+
+[data-theme="light"] footer .text-gray-500 {
+  color: #000000 !important;
+}
+
+[data-theme="light"] footer .text-gray-400 {
+  color: #374151 !important;
+}
+
+[data-theme="light"] footer .text-cyan-400\/80 {
+  color: #000000 !important;
+}
+
+[data-theme="light"] footer .hover\:text-cyan-400:hover {
+  color: #0891b2 !important;
+}
+
+[data-theme="light"] .terminal-window,
+[data-theme="light"] .terminal-card {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+[data-theme="light"] .terminal-header {
+  background-color: #f1f5f9 !important;
+  border-color: #e2e8f0 !important;
+}
+
+[data-theme="light"] .api-input {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .bg-gray-900\/80.backdrop-blur-md { 
+  background-color: rgba(248, 250, 252, 0.85) !important; 
+}
+
+[data-theme="light"] .bg-black\/50 { background-color: rgba(2, 6, 23, 0.15) !important; }
+
+[data-theme="light"] .hover\:bg-cyan-500\/5:hover { background-color: rgba(6, 182, 212, 0.06) !important; }
+[data-theme="light"] .hover\:bg-gray-800:hover { background-color: #f8fafc !important; }
+[data-theme="light"] .hover\:bg-gray-800\/70:hover { background-color: rgba(248, 250, 252, 0.7) !important; }
+
+[data-theme="light"] ::selection {
+  background-color: rgba(99, 102, 241, 0.25);
+  color: #111827;
+}
+
+/* Lakshya */
+/* feat : added light mode toggle */

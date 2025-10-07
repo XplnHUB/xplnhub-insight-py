@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Terminal, Github, Menu, X, ChevronRight, Twitter, Linkedin, Mail, Heart, ExternalLink, Sparkles } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -105,6 +106,7 @@ const Layout: React.FC<LayoutProps> = ({ children, onOpenOnboarding }) => {
               </nav>
 
               <div className="hidden md:flex items-center space-x-4">
+                <ThemeToggle />
                 <a 
                   href="https://github.com/XplnHUB/Insight-Py" 
                   target="_blank"
@@ -190,7 +192,8 @@ const Layout: React.FC<LayoutProps> = ({ children, onOpenOnboarding }) => {
                 </nav>
 
                 {/* Mobile Menu Footer */}
-                <div className="p-6 border-t border-cyan-500/20">
+                <div className="p-6 border-t border-cyan-500/20 flex items-center justify-between">
+                  <ThemeToggle />
                   <p className="text-xs text-gray-500 text-center">
                     &copy; 2025 XplnHUB
                   </p>
