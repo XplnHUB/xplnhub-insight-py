@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { 
   X, 
   Terminal, 
@@ -15,6 +15,7 @@ import {
   Zap,
   Sparkles
 } from 'lucide-react';
+import { LoadingButton } from './Spinner';
 
 interface OnboardingModalProps {
   isOpen: boolean;
@@ -28,6 +29,8 @@ const OnboardingModal: React.FC<OnboardingModalProps> = ({ isOpen, onClose }) =>
   const [projectPath, setProjectPath] = useState('./my-project');
   const [copiedStates, setCopiedStates] = useState<{ [key: string]: boolean }>({});
   const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set());
+  const [isInstalling, setIsInstalling] = useState(false);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
 
   const copyToClipboard = async (text: string, key: string) => {
     try {
@@ -43,6 +46,20 @@ const OnboardingModal: React.FC<OnboardingModalProps> = ({ isOpen, onClose }) =>
 
   const markStepComplete = (stepIndex: number) => {
     setCompletedSteps(prev => new Set([...prev, stepIndex]));
+  };
+
+  const simulateInstallation = async () => {
+    setIsInstalling(true);
+    await new Promise(resolve => setTimeout(resolve, 3000));
+    setIsInstalling(false);
+    markStepComplete(4); // Mark install step as complete
+  };
+
+  const simulateAnalysis = async () => {
+    setIsAnalyzing(true);
+    await new Promise(resolve => setTimeout(resolve, 4000));
+    setIsAnalyzing(false);
+    markStepComplete(6); // Mark run step as complete
   };
 
   const steps = [
@@ -268,11 +285,24 @@ const OnboardingModal: React.FC<OnboardingModalProps> = ({ isOpen, onClose }) =>
               </div>
             </div>
           </div>
-          <div className="installation-progress">
-            <div className="progress-bar">
-              <div className="progress-fill"></div>
-            </div>
-            <p className="text-sm text-gray-400 text-center mt-2">Installing dependencies...</p>
+          <div className="space-y-4">
+            <LoadingButton
+              isLoading={isInstalling}
+              onClick={simulateInstallation}
+              loadingText="Installing..."
+              className="neon-button w-full"
+            >
+              Install Insight CLI
+            </LoadingButton>
+            
+            {isInstalling && (
+              <div className="installation-progress">
+                <div className="progress-bar">
+                  <div className="progress-fill"></div>
+                </div>
+                <p className="text-sm text-gray-400 text-center mt-2">Installing dependencies...</p>
+              </div>
+            )}
           </div>
         </div>
       )
@@ -387,13 +417,34 @@ const OnboardingModal: React.FC<OnboardingModalProps> = ({ isOpen, onClose }) =>
                   {copiedStates.run ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                 </button>
               </div>
-              <div className="terminal-line delay-1">
-                <span className="text-cyan-400 typewriter">🚀 Analyzing codebase...</span>
-              </div>
-              <div className="terminal-line delay-2">
-                <span className="text-green-400 typewriter">✓ Analysis complete! Report saved to insight_report.md</span>
-              </div>
+              {isAnalyzing ? (
+                <div className="terminal-line">
+                  <span className="text-cyan-400 flex items-center space-x-2">
+                    <Spinner size="sm" color="cyan" />
+                    <span>Analyzing codebase...</span>
+                  </span>
+                </div>
+              ) : (
+                <>
+                  <div className="terminal-line delay-1">
+                    <span className="text-cyan-400 typewriter">🚀 Analyzing codebase...</span>
+                  </div>
+                  <div className="terminal-line delay-2">
+                    <span className="text-green-400 typewriter">✓ Analysis complete! Report saved to insight_report.md</span>
+                  </div>
+                </>
+              )}
             </div>
+          </div>
+          <div className="mt-6">
+            <LoadingButton
+              isLoading={isAnalyzing}
+              onClick={simulateAnalysis}
+              loadingText="Analyzing..."
+              className="neon-button w-full"
+            >
+              Run Analysis
+            </LoadingButton>
           </div>
         </div>
       )

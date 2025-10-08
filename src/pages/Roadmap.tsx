@@ -1,7 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { GitBranch, CheckCircle, Clock, Lightbulb, Zap, Globe, Code, Palette, Shield, Sparkles } from 'lucide-react';
+import { useLoading } from '../hooks/useLoading';
+import { GridSkeleton, TimelineSkeleton } from '../components/__test__/LoadingSkeleton';
+import { InlineLoader, LoadingButton } from '../components/Spinner';
 
 const Roadmap: React.FC = () => {
+  const [isRoadmapLoading, setIsRoadmapLoading] = useState(true);
+  const [isFutureVisionLoading, setIsFutureVisionLoading] = useState(true);
+  const { isLoading: isDiscussionsLoading, executeWithLoading } = useLoading();
+
+  // Simulate loading states
+  useEffect(() => {
+    const timer1 = setTimeout(() => setIsRoadmapLoading(false), 1500);
+    const timer2 = setTimeout(() => setIsFutureVisionLoading(false), 2000);
+    
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+    };
+  }, []);
+
+  const handleDiscussionsClick = async () => {
+    await executeWithLoading(async () => {
+      await new Promise(resolve => setTimeout(resolve, 800));
+      window.open('https://github.com/XplnHUB/Insight-Py/discussions', '_blank');
+    });
+  };
+
   const roadmapItems = [
     {
       quarter: "Q1 2025",
@@ -229,8 +254,12 @@ const Roadmap: React.FC = () => {
           <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-500 via-purple-500 to-pink-500"></div>
 
           {/* Roadmap items */}
-          <div className="space-y-16">
-            {roadmapItems.map((period, periodIndex) => (
+          <InlineLoader 
+            isLoading={isRoadmapLoading} 
+            fallback={<TimelineSkeleton />}
+          >
+            <div className="space-y-16">
+              {roadmapItems.map((period, periodIndex) => (
               <div key={periodIndex} className="relative">
                 {/* Quarter marker */}
                 <div className="flex items-center mb-8">
@@ -273,8 +302,9 @@ const Roadmap: React.FC = () => {
                   ))}
                 </div>
               </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          </InlineLoader>
         </div>
 
         {/* Future Vision */}
@@ -287,8 +317,12 @@ const Roadmap: React.FC = () => {
               Beyond our current roadmap, we're exploring these exciting possibilities
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {futureVision.map((item, index) => (
+          <InlineLoader 
+            isLoading={isFutureVisionLoading} 
+            fallback={<GridSkeleton items={3} columns={3} />}
+          >
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {futureVision.map((item, index) => (
               <div key={index} className="feature-card group text-center">
                 <div className="feature-icon-wrapper mb-6 mx-auto">
                   <div className="feature-icon">
@@ -302,8 +336,9 @@ const Roadmap: React.FC = () => {
                   {item.description}
                 </p>
               </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          </InlineLoader>
         </div>
 
         {/* Community Input */}
@@ -316,15 +351,14 @@ const Roadmap: React.FC = () => {
             Join our community and let us know what you'd like to see next.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="https://github.com/XplnHUB/Insight-Py/discussions" 
-              target="_blank" 
-              rel="noopener noreferrer"
+            <LoadingButton
+              isLoading={isDiscussionsLoading}
+              onClick={handleDiscussionsClick}
               className="neon-button flex items-center space-x-2"
             >
               <GitBranch className="w-5 h-5" />
               <span>Join Discussions</span>
-            </a>
+            </LoadingButton>
             <a 
               href="https://github.com/XplnHUB/Insight-Py/issues/new" 
               target="_blank" 

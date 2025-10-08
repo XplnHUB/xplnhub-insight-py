@@ -1,12 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Code, FileText, BarChart3, Brain, Zap, Shield, GitBranch, Package, Search, FileCode, Terminal, CheckCircle } from 'lucide-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPython, faJs, faJava, faPhp, faRust, faSwift, faGolang, faHtml5 } from '@fortawesome/free-brands-svg-icons';
 import { faCode, faDatabase, faTerminal, faGem, faBolt, faBullseye, faCircle } from '@fortawesome/free-solid-svg-icons';
 import LanguageModal from '../components/LanguageModal';
+import { useLoading } from '../hooks/useLoading';
+import { CardSkeleton, GridSkeleton } from '../components/__test__/LoadingSkeleton';
+import { InlineLoader, LoadingButton } from '../components/Spinner';
 
 const Features: React.FC = () => {
   const [isLanguageModalOpen, setIsLanguageModalOpen] = useState(false);
+  const [isMainFeaturesLoading, setIsMainFeaturesLoading] = useState(true);
+  const [isAdditionalFeaturesLoading, setIsAdditionalFeaturesLoading] = useState(true);
+  const [isLanguagesLoading, setIsLanguagesLoading] = useState(true);
+  const { isLoading: isModalLoading, executeWithLoading } = useLoading();
+
+  // Simulate loading states
+  useEffect(() => {
+    const timer1 = setTimeout(() => setIsMainFeaturesLoading(false), 1000);
+    const timer2 = setTimeout(() => setIsAdditionalFeaturesLoading(false), 1500);
+    const timer3 = setTimeout(() => setIsLanguagesLoading(false), 2000);
+    
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
+    };
+  }, []);
+
+  const handleLanguageModalOpen = async () => {
+    await executeWithLoading(async () => {
+      await new Promise(resolve => setTimeout(resolve, 500));
+      setIsLanguageModalOpen(true);
+    });
+  };
   const mainFeatures = [
     {
       icon: <Code className="w-8 h-8" />,
@@ -139,7 +166,11 @@ const Features: React.FC = () => {
 
         {/* Main Features */}
         <div className="space-y-24 mb-32">
-          {mainFeatures.map((feature, index) => (
+          <InlineLoader 
+            isLoading={isMainFeaturesLoading} 
+            fallback={<div className="space-y-24"><CardSkeleton /><CardSkeleton /><CardSkeleton /><CardSkeleton /></div>}
+          >
+            {mainFeatures.map((feature, index) => (
             <div key={index} className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
               <div className={`${index % 2 === 1 ? 'lg:order-2' : ''}`}>
                 <div className="feature-card">
@@ -170,7 +201,8 @@ const Features: React.FC = () => {
                 </div>
               </div>
             </div>
-          ))}
+            ))}
+          </InlineLoader>
         </div>
 
         {/* Additional Features Grid */}
@@ -183,8 +215,12 @@ const Features: React.FC = () => {
               Even more features to enhance your code analysis workflow
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {additionalFeatures.map((feature, index) => (
+          <InlineLoader 
+            isLoading={isAdditionalFeaturesLoading} 
+            fallback={<GridSkeleton items={8} columns={4} />}
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {additionalFeatures.map((feature, index) => (
               <div key={index} className="feature-card group hover:scale-105 transition-transform">
                 <div className="feature-icon-wrapper mb-4">
                   <div className="feature-icon bg-gradient-to-br from-cyan-500/20 to-purple-500/20">
@@ -198,8 +234,9 @@ const Features: React.FC = () => {
                   {feature.description}
                 </p>
               </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          </InlineLoader>
         </div>
 
         {/* Supported Languages */}
@@ -213,26 +250,32 @@ const Features: React.FC = () => {
             </p>
           </div>
           
-          <div className="max-w-4xl mx-auto mb-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {supportedLanguages.map((lang, index) => (
+          <InlineLoader 
+            isLoading={isLanguagesLoading} 
+            fallback={<GridSkeleton items={16} columns={4} />}
+          >
+            <div className="max-w-4xl mx-auto mb-8">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {supportedLanguages.map((lang, index) => (
                 <div key={index} className="feature-card text-center py-4 hover:scale-105 transition-transform">
                   <div className="mb-2">
                     <FontAwesomeIcon icon={lang.icon} className={`text-3xl ${lang.color}`} />
                   </div>
                   <span className="text-sm text-gray-300 font-medium">{lang.name}</span>
                 </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+          </InlineLoader>
 
           <div className="text-center">
-            <button
-              onClick={() => setIsLanguageModalOpen(true)}
+            <LoadingButton
+              isLoading={isModalLoading}
+              onClick={handleLanguageModalOpen}
               className="neon-button mx-auto"
             >
               <span>View All Supported Languages & File Types</span>
-            </button>
+            </LoadingButton>
             <p className="text-gray-400 text-sm mt-4">
               Click to see detailed file extensions and how each language is evaluated
             </p>
