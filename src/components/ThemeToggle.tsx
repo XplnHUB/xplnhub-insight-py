@@ -30,20 +30,31 @@ const ThemeToggle: React.FC = () => {
       // ignore
     }
   };
-
+  const isDark = theme === 'dark';
   return (
     <button
-      aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-      title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+      aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+      title={`Switch to ${isDark ? 'light' : 'dark'} mode`}
       onClick={toggle}
-      className="theme-toggle inline-flex items-center justify-center w-10 h-10 rounded-full transition-shadow duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+      className="group relative inline-flex items-center w-14 h-8 rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 hover:scale-105 active:scale-95"
+      style={{
+        background: isDark ? 'linear-gradient(135deg, #1e293b 0%, #334155 100%)' : 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)'
+      }}
     >
       <span className="sr-only">Toggle theme</span>
-      {theme === 'dark' ? (
-        <Sun className="w-5 h-5 text-yellow-400" />
-      ) : (
-        <Moon className="w-5 h-5 text-indigo-600" />
-      )}
+      <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-md"
+        style={{
+          background: isDark ? 'rgba(139, 92, 246, 0.3)' : 'rgba(251, 191, 36, 0.4)'
+        }}
+      />
+      <div className="absolute top-1 left-1 w-6 h-6 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 ease-in-out"
+        style={{
+          transform: isDark ? 'translateX(0)' : 'translateX(24px)',
+          background: isDark ? 'linear-gradient(135deg, #4f46e5 0%, #6366f1 100%)': 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)'
+        }}
+      >
+      {isDark ? (<Moon className="w-4 h-4 text-white" />) : (<Sun className="w-4 h-4 text-amber-500" />)}
+      </div>
     </button>
   );
 };
