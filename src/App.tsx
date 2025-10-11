@@ -6,9 +6,6 @@ import Features from './pages/Features';
 import Implementation from './pages/Implementation';
 import Roadmap from './pages/Roadmap';
 import OnboardingModal from './components/OnboardingModal';
-import LoadingDemo from './components/__test__/LoadingDemo';
-import LoadingTest from './components/__test__/LoadingTest';
-
 function App() {
   const [isOnboardingOpen, setIsOnboardingOpen] = useState(false);
 
@@ -20,8 +17,6 @@ function App() {
           <Route path="/features" element={<Features />} />
           <Route path="/implementation" element={<Implementation />} />
           <Route path="/roadmap" element={<Roadmap />} />
-          <Route path="/loading-demo" element={<LoadingDemo />} />
-          <Route path="/loading-test" element={<LoadingTest />} />
         </Routes>
       </Layout>
       

@@ -410,12 +410,12 @@ const OnboardingModal: React.FC<OnboardingModalProps> = ({ isOpen, onClose }) =>
                 <span className="text-purple-400">(venv)</span>
                 <span className="text-green-400 ml-1">$</span>
                 <span className="text-white ml-2 typewriter">insight-cli {projectPath}</span>
-                <button
+                {/* <button
                   onClick={() => copyToClipboard(`insight-cli ${projectPath}`, 'run')}
                   className="copy-button ml-4"
                 >
                   {copiedStates.run ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-                </button>
+                </button> */}
               </div>
               {isAnalyzing ? (
                 <div className="terminal-line">

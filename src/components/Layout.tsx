@@ -52,8 +52,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     { path: '/features', label: 'Features' },
     { path: '/implementation', label: 'Implementation' },
     { path: '/roadmap', label: 'Roadmap' },
-    { path: '/loading-demo', label: 'Loading Demo' },
-    { path: '/loading-test', label: 'Loading Test' }
   ];
 
   const isActive = (path: string) => {
@@ -366,8 +364,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent"></div>
               <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
                 <div className="flex items-center gap-2 text-gray-500 text-sm">
-                  <span>&copy; 2025 XplnHUB ~ CodeMaverick-143</span>
-                  <span className="hidden md:inline">•</span>
+                  <p>&copy; 2025 XplnHUB ~ CodeMaverick-143</p>
+                  <p className="hidden md:inline">•</p>
                   <span className="flex items-center gap-1">
                     Built with <Heart className="w-4 h-4 text-pink-500 fill-pink-500 animate-pulse" /> for developers
                   </span>
@@ -382,10 +380,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               </div>
             </div>
           </div>
-
-          {/* Decorative bottom gradient */}
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-900 to-transparent pointer-events-none"></div>
-          </div>
+         </div>
         </footer>
       </div>
     </div>
