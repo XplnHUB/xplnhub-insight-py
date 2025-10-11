@@ -13,6 +13,29 @@ const Home: React.FC<HomeProps> = ({ onOpenOnboarding }) => {
   const [isFeaturesLoading, setIsFeaturesLoading] = useState(true);
   const { isLoading: isOnboardingLoading, executeWithLoading } = useLoading();
 
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+
+  // Watch for theme changes
+  useEffect(() => {
+    const initialTheme = document.documentElement.getAttribute('data-theme') as 'dark' | 'light' || 'dark';
+    setTheme(initialTheme);
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+          const newTheme = document.documentElement.getAttribute('data-theme') as 'dark' | 'light' || 'dark';
+          setTheme(newTheme);
+        }
+      });
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme']
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   // Simulate features loading
   useEffect(() => {
@@ -29,6 +52,8 @@ const Home: React.FC<HomeProps> = ({ onOpenOnboarding }) => {
       onOpenOnboarding();
     });
   };
+
+  const isDark = theme === 'dark';
 
   const featureHighlights = [
     {
@@ -60,13 +85,19 @@ const Home: React.FC<HomeProps> = ({ onOpenOnboarding }) => {
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-8 animate-fade-in">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              <span className={`bg-gradient-to-r bg-clip-text text-transparent ${
+                isDark 
+                  ? 'from-cyan-400 via-purple-400 to-pink-400'
+                  : 'from-cyan-600 via-purple-600 to-pink-600'
+              }`}>
                 Analyze Your Codebases
               </span>
               <br />
-              <span className="text-white">with AI-Powered Insights</span>
+              <span className={isDark ? 'text-white' : 'text-gray-900'}>with AI-Powered Insights</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+            <p className={`text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed ${
+              isDark ? 'text-gray-300' : 'text-gray-600'
+            }`}>
               Insight is a Python CLI tool that generates detailed reports combining 
               static code analysis with AI explanations.
             </p>
@@ -74,7 +105,11 @@ const Home: React.FC<HomeProps> = ({ onOpenOnboarding }) => {
               <LoadingButton
                 isLoading={isOnboardingLoading}
                 onClick={handleGetStarted}
-                className="group relative w-full sm:w-auto px-6 py-3.5 bg-gradient-to-r from-purple-600 via-violet-600 to-indigo-600 hover:from-purple-500 hover:via-violet-500 hover:to-indigo-500 text-white font-semibold rounded-xl shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] overflow-hidden"
+                className={`group relative w-full sm:w-auto px-6 py-3.5 font-semibold rounded-xl shadow-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] overflow-hidden ${
+                  isDark
+                    ? 'bg-gradient-to-r from-purple-600 via-violet-600 to-indigo-600 hover:from-purple-500 hover:via-violet-500 hover:to-indigo-500 text-white shadow-purple-500/30 hover:shadow-purple-500/50'
+                    : 'bg-gradient-to-r from-purple-200 via-violet-300 to-indigo-300 hover:from-purple-500 hover:via-violet-600 hover:to-indigo-600 text-white shadow-purple-500/40 hover:shadow-purple-500/60'
+                }`}
               >
                 <div className="relative z-10 flex items-center justify-center space-x-2 whitespace-nowrap">
                   <Play className="w-5 h-5 flex-shrink-0 group-hover:scale-110 transition-transform" />
@@ -83,7 +118,11 @@ const Home: React.FC<HomeProps> = ({ onOpenOnboarding }) => {
                 </div>
               </LoadingButton>
               <a href="https://github.com/XplnHUB/Insight-Py" target="_blank" rel="noopener noreferrer">
-                <button className="group w-full px-6 py-3.5 bg-slate-900/50 hover:bg-slate-800/60 backdrop-blur-sm border-2 border-slate-700 hover:border-slate-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]">
+                <button className={`group w-full px-6 py-3.5 backdrop-blur-sm border-2 font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] ${
+                  isDark
+                    ? 'bg-slate-900/50 hover:bg-slate-800/60 border-slate-700 hover:border-slate-600 text-white'
+                    : 'bg-white/70 hover:bg-white/90 border-gray-300 hover:border-gray-400 text-gray-900'
+                }`}>
                   <div className="flex items-center justify-center space-x-2 whitespace-nowrap">
                     <Github className="w-5 h-5 flex-shrink-0 group-hover:rotate-12 transition-transform" />
                     <span className="flex-shrink-0">View on GitHub</span>
