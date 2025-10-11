@@ -74,17 +74,21 @@ const Home: React.FC<HomeProps> = ({ onOpenOnboarding }) => {
               <LoadingButton
                 isLoading={isOnboardingLoading}
                 onClick={handleGetStarted}
-                className="neon-button group flex items-center space-x-2"
+                className="group relative w-full sm:w-auto px-6 py-3.5 bg-gradient-to-r from-purple-600 via-violet-600 to-indigo-600 hover:from-purple-500 hover:via-violet-500 hover:to-indigo-500 text-white font-semibold rounded-xl shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] overflow-hidden"
               >
-                <Play className="w-5 h-5" />
-                <span>Get Started</span>
-                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <div className="relative z-10 flex items-center justify-center space-x-2 whitespace-nowrap">
+                  <Play className="w-5 h-5 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                  <span className="flex-shrink-0">Get Started</span>
+                  <ChevronRight className="w-4 h-4 flex-shrink-0 group-hover:translate-x-1 transition-transform" />
+                </div>
               </LoadingButton>
               <a href="https://github.com/XplnHUB/Insight-Py" target="_blank" rel="noopener noreferrer">
-                <button className="neon-button-outline flex items-center space-x-2">
-                  <Github className="w-5 h-5" />
-                  <span>View on GitHub</span>
-                  <Star className="w-4 h-4" />
+                <button className="group w-full px-6 py-3.5 bg-slate-900/50 hover:bg-slate-800/60 backdrop-blur-sm border-2 border-slate-700 hover:border-slate-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]">
+                  <div className="flex items-center justify-center space-x-2 whitespace-nowrap">
+                    <Github className="w-5 h-5 flex-shrink-0 group-hover:rotate-12 transition-transform" />
+                    <span className="flex-shrink-0">View on GitHub</span>
+                    <Star className="w-4 h-4 flex-shrink-0 group-hover:fill-yellow-400 group-hover:text-yellow-400 transition-all" />
+                  </div>
                 </button>
               </a>
             </div>
@@ -170,8 +174,8 @@ const Home: React.FC<HomeProps> = ({ onOpenOnboarding }) => {
               </button>
             </Link>
           </div>
-          <InlineLoader 
-            isLoading={isFeaturesLoading} 
+          <InlineLoader
+            isLoading={isFeaturesLoading}
             fallback={<GridSkeleton items={4} columns={4} />}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

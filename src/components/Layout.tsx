@@ -135,7 +135,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             />
             
             <div 
-              className={`fixed top-0 right-0 h-screen w-80 max-w-[85vw] bg-gray-900/80 backdrop-blur-xl border-l border-cyan-500/20 z-50 md:hidden transform transition-transform duration-300 ease-in-out ${
+              className={`fixed top-0 right-0 h-screen w-80 max-w-[85vw] bg-gray-900 backdrop-blur-xl border-l border-cyan-500/20 z-50 md:hidden transform transition-transform duration-300 ease-in-out ${
                 mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
               }`}
             >

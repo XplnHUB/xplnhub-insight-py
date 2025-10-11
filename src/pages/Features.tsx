@@ -187,9 +187,11 @@ const Features: React.FC = () => {
               <p className="text-gray-400 text-sm">
                 Set your API key before running Insight:
               </p>
-              <pre className="bg-black/40 border border-yellow-500/20 text-yellow-200 text-sm p-3 rounded-md mt-2">
-{`export GEMINI_API_KEY=your_api_key_here   # macOS/Linux
-set GEMINI_API_KEY=your_api_key_here       # Windows PowerShell`}
+              <pre className="bg-black/40 border border-yellow-500/20 text-yellow-200 text-xs p-1 rounded-md">
+{`# macOS/Linux
+export GEMINI_API_KEY=your_api_key
+# Windows PowerShell 
+set GEMINI_API_KEY=your_api_key`}
               </pre>
               <p className="text-gray-400 text-sm mt-3">
                 You can obtain your API key from{" "}
