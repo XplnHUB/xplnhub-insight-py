@@ -15,28 +15,33 @@ const Skeleton: React.FC<SkeletonProps> = ({
   rounded = false,
   animate = true 
 }) => {
-  const baseClasses = 'bg-gray-700/50';
-  const roundedClasses = rounded ? 'rounded-full' : 'rounded';
-  const animateClasses = animate ? 'animate-pulse' : '';
+  const baseClasses = 'relative bg-gray-800/80 overflow-hidden';
+  const roundedClasses = rounded ? 'rounded-full' : 'rounded-lg';
   
   return (
     <div 
-      className={`${baseClasses} ${roundedClasses} ${animateClasses} ${className}`}
+      className={`${baseClasses} ${roundedClasses} ${className}`}
       style={{ width, height }}
-    />
+    >
+      {animate && (
+        <div className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-gray-700/50 to-transparent" />
+      )}
+    </div>
   );
 };
 
 // Card skeleton for feature cards
 export const CardSkeleton: React.FC<{ className?: string }> = ({ className = '' }) => (
   <div className={`feature-card ${className}`} data-testid="skeleton-card">
-    <div className="feature-icon-wrapper mb-6">
+    <div className="flex items-center justify-center mb-6 w-16 h-16">
       <Skeleton width="4rem" height="4rem" rounded />
     </div>
-    <Skeleton height="1.5rem" width="80%" className="mb-4" />
-    <Skeleton height="1rem" width="100%" className="mb-2" />
-    <Skeleton height="1rem" width="90%" className="mb-2" />
-    <Skeleton height="1rem" width="70%" />
+    <Skeleton height="1.75rem" width="85%" className="mb-4" />
+    <div className="space-y-3">
+      <Skeleton height="1rem" width="100%" />
+      <Skeleton height="1rem" width="95%" />
+      <Skeleton height="1rem" width="75%" />
+    </div>
   </div>
 );
 
