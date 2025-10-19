@@ -358,12 +358,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   </a>
                 </div>
               </div>
+            </div>
 
             {/* Bottom Bar */}
-            <div className="relative">
+            <div className="relative pt-12">
               <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent"></div>
               <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
-                <div className="flex items-center gap-2 text-gray-500 text-sm">
+                <div className="flex flex-col md:flex-row items-center gap-2 text-gray-500 text-sm">
                   <p>&copy; 2025 XplnHUB ~ CodeMaverick-143</p>
                   <p className="hidden md:inline">•</p>
                   <span className="flex items-center gap-1">
@@ -380,7 +381,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               </div>
             </div>
           </div>
-         </div>
         </footer>
       </div>
     </div>

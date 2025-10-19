@@ -81,6 +81,20 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Skeleton loading shimmer animation */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
 .neon-button {
   @apply px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-semibold rounded-lg;
   @apply hover:shadow-lg transition-all duration-300;
@@ -759,6 +773,15 @@ html {
 [data-theme="light"] ::selection {
   background-color: rgba(99, 102, 241, 0.25);
   color: #111827;
+}
+
+/* Light theme skeleton styles */
+[data-theme="light"] .bg-gray-800\/80 {
+  background-color: rgba(226, 232, 240, 0.6) !important;
+}
+
+[data-theme="light"] .bg-gradient-to-r.from-transparent.via-gray-700\/50.to-transparent {
+  background-image: linear-gradient(to right, transparent, rgba(148, 163, 184, 0.4), transparent) !important;
 }
 
 /* Lakshya */
