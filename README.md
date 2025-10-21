@@ -7,7 +7,7 @@ Insight-Py is a Python CLI tool that generates detailed reports combining static
   * **Analyze 30+ File Types**: Support for a wide range of programming languages and formats, including Python, JavaScript, HTML, CSS, JSON, YAML, and many more.
   * **Generate Markdown Reports**: Get beautiful, structured reports in Markdown format with comprehensive analysis and insights.
   * **Collect Static Metrics**: Detailed metrics including lines of code, functions, classes, imports, and comment ratios.
-  * **AI-Powered Explanations**: Leverage intelligent code analysis with LLM probability scores and actionable insights.
+  * **AI-Powered Explanations**: Leverage intelligent code analysis with LLM probability scores and actionable insights..
 
 ## Installation
 
