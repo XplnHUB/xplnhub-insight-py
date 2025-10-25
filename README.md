@@ -1,6 +1,6 @@
 # Insight-Py
 
-Insight-Py is a Python CLI tool that generates detailed reports combining static code analysis with AI explanations. Analyze your codebases with AI-powered insights and get a deeper understanding of your projects..
+Insight-Py is a Python CLI tool that generates detailed reports combining static code analysis with AI explanations. Analyze your codebases with AI-powered insights and get a deeper understanding of your projects
 
 ## Features
 
