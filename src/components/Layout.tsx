@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Terminal, Github, Menu, X, ChevronRight, Twitter, Linkedin, Mail, Heart, ExternalLink, Sparkles } from 'lucide-react';
+import { Terminal, Github, Menu, X, ChevronRight, Linkedin, Mail, Heart, ExternalLink, Sparkles } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 
 interface LayoutProps {
@@ -333,12 +333,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   </a>
                   <a 
                     href="https://x.com/CodeMaverick143" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group p-3 bg-gray-800/50 hover:bg-gray-800 border border-gray-700/50 hover:border-cyan-500/50 rounded-xl transition-all duration-300 hover:scale-110"
-                    title="Twitter"
-                  >
-                    <Twitter className="w-5 h-5 text-gray-400 group-hover:text-cyan-400 transition-colors" />
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="group p-3 bg-gray-800/50 hover:bg-gray-800 border border-gray-700/50 hover:border-cyan-500/50 rounded-xl transition-all duration-300 hover:scale-110" 
+                    title="X" 
+                  > 
+                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-gray-400 group-hover:text-cyan-400 transition-colors">
+                      <path d="M18.901 1.153h3.68l-8.04 9.19 9.457 12.504h-7.406l-5.8-7.584-6.638 7.584H.47l8.675-9.913L0 1.154h7.594l5.243 6.917ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+                    </svg>
                   </a>
                   <a 
                     href="https://www.linkedin.com/in/arpitsarang/" 
