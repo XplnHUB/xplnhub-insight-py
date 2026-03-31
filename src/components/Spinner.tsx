@@ -281,7 +281,7 @@ export const LoadingButton: React.FC<LoadingButtonProps> = ({
     >
       <div className="flex items-center justify-center space-x-2">
         {isLoading && <Spinner size={spinnerSize} />}
-        <span>{children}</span>
+        {children}
       </div>
     </button>
   );
