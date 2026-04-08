@@ -131,19 +131,19 @@ const Home: React.FC<HomeProps> = ({ onOpenOnboarding }) => {
                 <h3 className="text-2xl font-semibold mb-4 text-pink-400">Key Highlights</h3>
                 <ul className="space-y-3 text-gray-300">
                   <li className="flex items-start space-x-3">
-                    <ChevronRight className="w-5 h-5 text-cyan-400 mt-1 flex-shrink-0" />
+                    <ChevronRight className="w-5 h-5 text-cyan-400 mt-[2px] flex-shrink-0" />
                     <span>Support for 30+ programming languages and file formats</span>
                   </li>
                   <li className="flex items-start space-x-3">
-                    <ChevronRight className="w-5 h-5 text-cyan-400 mt-1 flex-shrink-0" />
+                    <ChevronRight className="w-5 h-5 text-cyan-400 mt-[2px] flex-shrink-0" />
                     <span>Detailed metrics including LOC, complexity, and code patterns</span>
                   </li>
                   <li className="flex items-start space-x-3">
-                    <ChevronRight className="w-5 h-5 text-cyan-400 mt-1 flex-shrink-0" />
+                    <ChevronRight className="w-5 h-5 text-cyan-400 mt-[2px] flex-shrink-0" />
                     <span>AI-powered explanations with confidence scores</span>
                   </li>
                   <li className="flex items-start space-x-3">
-                    <ChevronRight className="w-5 h-5 text-cyan-400 mt-1 flex-shrink-0" />
+                    <ChevronRight className="w-5 h-5 text-cyan-400 mt-[2px] flex-shrink-0" />
                     <span>Beautiful Markdown reports ready to share</span>
                   </li>
                   <li className="flex items-start space-x-3">
