@@ -238,7 +238,7 @@ set GEMINI_API_KEY=your_api_key`}
                     <ul className="space-y-3">
                       {feature.details.map((detail, idx) => (
                         <li key={idx} className="flex items-start space-x-3 text-gray-300">
-                          <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
+                          <CheckCircle className="w-5 h-5 text-green-400 mt-[2px] flex-shrink-0" />
                           <span>{detail}</span>
                         </li>
                       ))}

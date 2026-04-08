@@ -233,19 +233,19 @@ const LanguageModal: React.FC<LanguageModalProps> = ({ isOpen, onClose }) => {
             <h4 className="text-lg font-semibold text-white mb-2">How Analysis Works</h4>
             <ul className="space-y-2 text-gray-300 text-sm">
               <li className="flex items-start space-x-2">
-                <span className="text-cyan-400 mt-1">•</span>
+                <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-[7px] flex-shrink-0" />
                 <span><strong>Static Analysis:</strong> Parses code structure without execution</span>
               </li>
               <li className="flex items-start space-x-2">
-                <span className="text-cyan-400 mt-1">•</span>
+                <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-[7px] flex-shrink-0" />
                 <span><strong>Metrics Collection:</strong> LOC, complexity, dependencies, and patterns</span>
               </li>
               <li className="flex items-start space-x-2">
-                <span className="text-cyan-400 mt-1">•</span>
+                <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-[7px] flex-shrink-0" />
                 <span><strong>AI Enhancement:</strong> Contextual explanations and improvement suggestions</span>
               </li>
               <li className="flex items-start space-x-2">
-                <span className="text-cyan-400 mt-1">•</span>
+                <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-[7px] flex-shrink-0" />
                 <span><strong>Report Generation:</strong> Beautiful Markdown output with all findings</span>
               </li>
             </ul>

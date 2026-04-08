@@ -292,7 +292,7 @@ const Roadmap: React.FC = () => {
                         <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
                           {item.features.map((feature, featureIndex) => (
                             <li key={featureIndex} className="flex items-start space-x-2 text-gray-400">
-                              <CheckCircle className="w-4 h-4 text-cyan-400 mt-1 flex-shrink-0" />
+                              <CheckCircle className="w-4 h-4 text-cyan-400 mt-[2px] flex-shrink-0" />
                               <span className="text-sm">{feature}</span>
                             </li>
                           ))}
